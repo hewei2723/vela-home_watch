@@ -1,6 +1,6 @@
 {
   "package": "com.application.watch.demo",
-  "name": "vela-haos",
+  "name": "vlea-home",
   "versionName": "1.0.0",
   "versionCode": 1,
   "minPlatformVersion": 1000,
@@ -11,9 +11,6 @@
   "features": [
     {
       "name": "system.router"
-    },
-    {
-      "name": "system.prompt"
     }
   ],
   "config": {
@@ -26,11 +23,8 @@
       "pages/index": {
         "component": "index"
       },
-      "pages/list": {
-        "component": "list"
-      },
-      "pages/add": {
-        "component": "add"
+      "pages/detail": {
+        "component": "detail"
       }
     }
   }
