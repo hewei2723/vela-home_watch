@@ -1,0 +1,49 @@
+<template>
+  <div class="demo-page">
+    <text class="title">欢迎打开{{title}}</text>
+    <!-- 点击跳转列表页 -->
+    <input class="btn" type="button" value="进入TodoList页面" onclick="routeList" />
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+import configuration from '@system.configuration'
+
+export default {
+  // 页面级组件的数据模型，影响传入数据的覆盖机制：private内定义的属性不允许被覆盖
+  private: {
+    title: '列表类示例模板'
+  },
+
+  routeList() {
+    // 跳转到应用内的某个页面，router用法详见：文档->接口->页面路由
+    router.replace({
+      uri: '/pages/list'
+    })
+  }
+}
+</script>
+
+<style>
+.demo-page {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  text-align: center;
+}
+
+.btn {
+  width: 260px;
+  height: 40px;
+  margin-top: 30px;
+  border-radius: 5px;
+  background-color: #16567d;
+  font-size: 24px;
+  color: #ffffff;
+}
+</style>

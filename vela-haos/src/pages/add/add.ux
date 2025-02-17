@@ -1,0 +1,91 @@
+<template>
+  <div class="page column">
+    <div class="header" onclick="goBack">
+      <text class="title">{{title}}</text>
+    </div>
+      <list class="list">
+        <list-item for="{{totalData}}" class="item" type="item">
+            <text class="icon"></text>
+            <text class="item-body" onclick="add($item)">{{$item}}</text>
+        </list-item>
+      </list>
+  </div>
+</template>
+
+<script>
+import router from '@system.router';
+import prompt from '@system.prompt';
+
+export default {
+  data: {
+    title: 'Choose From List',
+    totalData: [
+      "Daily Task 1",
+      "Daily Task 2",
+      "Daily Task 3",
+      "Daily Task 4",
+      "Daily Task 5",
+      "Daily Task 6",
+    ],
+    listData:[]
+  },
+
+  goBack() {
+    router.push({
+      uri: '/pages/list',
+      params: {
+        listData: this.listData
+      }
+    })
+  },
+
+  add(item) {
+    if (this.listData.some( i => i.status === "undone" && i.value === item)) {
+      prompt.showToast({
+        message: "该任务已添加过哦",
+        duration: 300
+      })
+    } else {
+      this.listData.unshift({status: "undone", value: item})
+      prompt.showToast({
+        message: "已添加新任务",
+        duration: 300
+      })
+    }
+  }
+}
+</script>
+
+<style>
+  .column {
+    flex-direction: column;
+  }
+
+  .page {
+    padding: 50px;
+  }
+
+  .title {
+    color: #f0fbff;
+  }
+
+  .list {
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    background-color: #607d8b;
+    border-radius: 10px;
+  }
+
+  .item {
+    height: 80px;
+  }
+
+  .icon {
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    margin: 35px;
+    background-color: #f0fbff;
+  }
+</style>
